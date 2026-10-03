@@ -1,0 +1,9 @@
+Group gFP2 "Aqara FP2 Living Room" <presence>
+
+Switch swLivingRoomCouch "Couch Presence [%s]" <presence> (gFP2) { channel="mqtt:topic:mosquitto:fp2_livingroom:presenceCouch" }
+Switch swLivingRoomDesk  "Desk Presence [%s]"  <presence> (gFP2) { channel="mqtt:topic:mosquitto:fp2_livingroom:presenceDesk" }
+
+Number numLivingRoomLux  "Illuminance [%.0f lx]" <light>    (gFP2) { channel="mqtt:topic:mosquitto:fp2_livingroom:illuminance" }
+Number numPeopleCount    "People Count [%.0f]"   <people>   (gFP2) { channel="mqtt:topic:mosquitto:fp2_livingroom:peopleCount" }
+
+Switch CouchLicht_Switch "Couch Light" <light>
