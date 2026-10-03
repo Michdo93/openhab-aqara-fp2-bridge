@@ -1,0 +1,24 @@
+# Add these automations to your Home Assistant automations.yaml file 
+# to forward Home Assistant FP2 states to the openHAB MQTT broker.
+
+- alias: "FP2 Forward Couch Occupancy to openHAB"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.presence_sensor_fp2_couch_occupancy
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "openhab/fp2/couch/presence"
+        payload: "{{ trigger.to_state.state | upper }}"
+        retain: true
+
+- alias: "FP2 Forward Illuminance to openHAB"
+  trigger:
+    - platform: state
+      entity_id: sensor.presence_sensor_fp2_illuminance
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "openhab/fp2/illuminance/lux"
+        payload: "{{ states('sensor.presence_sensor_fp2_illuminance') }}"
+        retain: true
