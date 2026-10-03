@@ -1,0 +1,12 @@
+Frame label="Sensor Status" {
+        Text item=numPeopleCount
+        Text item=numLivingRoomLux
+    }
+    Frame label="Zones" {
+        Switch item=swLivingRoomCouch
+        Switch item=swLivingRoomDesk
+    }
+    Frame label="Actuators" {
+        Switch item=CouchLicht_Switch
+    }
+}
