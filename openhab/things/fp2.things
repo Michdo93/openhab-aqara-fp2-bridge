@@ -1,0 +1,9 @@
+Bridge mqtt:broker:mosquitto "MQTT Broker" [ host="127.0.0.1", secure=false ] {
+    Thing topic fp2_livingroom "Aqara FP2 Living Room" @ "Living Room" {
+        Channels:
+            Type switch : presenceCouch   "Couch Presence"   [ stateTopic="openhab/fp2/couch/presence" ]
+            Type switch : presenceDesk   "Desk Presence"    [ stateTopic="openhab/fp2/desk/presence" ]
+            Type number : illuminance    "Illuminance (Lux)" [ stateTopic="openhab/fp2/illuminance/lux" ]
+            Type number : peopleCount    "People Count"     [ stateTopic="openhab/fp2/people/count" ]
+    }
+}
