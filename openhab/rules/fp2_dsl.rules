@@ -1,0 +1,19 @@
+rule "FP2 Couch Presence Light Automation"
+when
+    Item swLivingRoomCouch changed
+then
+    if (swLivingRoomCouch.state == ON) {
+        logInfo("FP2", "Couch occupied. Turning on light if dark.")
+        if ((numLivingRoomLux.state as Number) < 150) {
+            CouchLicht_Switch.sendCommand(ON)
+        }
+    } else {
+        logInfo("FP2", "Couch vacant. Scheduling light switch off.")
+        createTimer(now.plusMinutes(3), [ |
+            if (swLivingRoomCouch.state == OFF) {
+                CouchLicht_Switch.sendCommand(OFF)
+                logInfo("FP2", "Couch light turned off due to prolonged absence.")
+            }
+        ])
+    }
+end
